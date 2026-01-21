@@ -1,4 +1,4 @@
-BassMage 1,374
+BassMage 1,373
 King_K_Rool 14 1
 Lucas 15 0
 King_DeDeDe 9 0
@@ -11,7 +11,7 @@ Minmin 12 1
 Greninga 11 1
 Inkling 11 1
 Falco 10 2
-Dr._Mario 7 0
+Dr_Mario 7 0
 Pichu 7 0
 Ganondorf 6 1
 Rosalina 2 0
@@ -31,7 +31,7 @@ Bowser 13 4
 Kazuya 13 3
 Lucina 11 2
 Toon_Link 11 2
-Bowser_Jr. 10 1
+Bowser_Jr 10 1
 Hero 10 2
 Link 9 2
 Chrom 8 1
