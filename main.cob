@@ -5,7 +5,7 @@ AUTHOR. Bunker Rohrbaugh.
 ENVIRONMENT DIVISION.
 INPUT-OUTPUT SECTION.
 FILE-CONTROL.
-SELECT PlayerFile ASSIGN TO "rank_1.txt"
+SELECT PlayerFile ASSIGN TO "records.txt"
        ORGANIZATION IS LINE SEQUENTIAL.
 *> SELECT Chart ASSIGN TO "result.txt"
 *>        ORGANIZATION IS LINE SEQUENTIAL.
@@ -353,7 +353,7 @@ FD PlayerFile.
                04 Mii-Brawler-Wins PIC 99.
                04 Mii-Brawler-Losses PIC 99.
            03 Mii-Swordfighter.
-               04 Mii-Swordfighter-Name PIC X(17).
+               04 Mii-Swordfighter-Name PIC X(16).
                04 Mii-Swordfighter-Wins PIC 99.
                04 Mii-Swordfighter-Losses PIC 99.
            03 Mii-Gunner.
@@ -369,7 +369,7 @@ Begin.
      AT END SET EndOfPlayerFile TO TRUE
    END-READ
    PERFORM UNTIL EndOfPlayerFile
-       DISPLAY PlayerName SPACE Mii-Gunner
+       DISPLAY Mii-Gunner
       READ PlayerFile
         AT END SET EndOfPlayerFile TO TRUE
       END-READ
