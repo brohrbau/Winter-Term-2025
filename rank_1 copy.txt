@@ -76,7 +76,7 @@ Pyra-Mythra 14 3
 Kazuya 13 3
 Sora 6 1
 Mii-Brawler 5 1
-Mii-Sword-Fighter 2 0
+Mii-Swordfighter 2 0
 Mii-Gunner 7 2
 
 
