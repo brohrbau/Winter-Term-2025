@@ -5,24 +5,23 @@ AUTHOR. Bunker Rohrbaugh.
 ENVIRONMENT DIVISION.
 INPUT-OUTPUT SECTION.
 FILE-CONTROL.
-SELECT PlayerFile ASSIGN TO "rank-1.txt"
+SELECT PlayerFile ASSIGN TO "rank_1.txt"
        ORGANIZATION IS LINE SEQUENTIAL.
-SELECT Chart ASSIGN TO "result.txt"
-       ORGANIZATION IS LINE SEQUENTIAL.
+*> SELECT Chart ASSIGN TO "result.txt"
+*>        ORGANIZATION IS LINE SEQUENTIAL.
 DATA DIVISION.
 FILE SECTION.
 FD PlayerFile.
 01 PlayerDetails.
        88 EndOfPlayerFile VALUE HIGH-VALUES. 
        02 PlayerName      PIC X(20).
-       02 PlayerScore     PIC 9(4).99.
        02 MatchupRecords.
            03 Mario.
                04 Mario-Name PIC X(5).
                04 Mario-Wins    PIC 99.
                04 Mario-Losses  PIC 99.
            03 Donkey-Kong.
-               04 DK-Name PIC X(10).
+               04 DK-Name PIC X(11).
                04 Donkey-Kong-Wins PIC 99.
                04 Donkey-Kong-Losses PIC 99.
            03 Link.
@@ -86,7 +85,7 @@ FD PlayerFile.
                04 Ice-Climbers-Wins PIC 99. 
                04 Ice-Climbers-Losses PIC 99. 
            03 Sheik.
-               04 Sheik-Name PIC (5).
+               04 Sheik-Name PIC X(5).
                04 Sheik-Wins PIC 99. 
                04 Shiek-Losses PIC 99.
            03 Zelda.
@@ -105,12 +104,16 @@ FD PlayerFile.
                04 Falco-Name PIC X(5).
                04 Falco-Wins PIC 99. 
                04 Falco-Losses PIC 99. 
+           03 Marth.
+               04 Marth-Name PIC X(5).
+               04 Marth-Wins PIC 99.
+               04 Marth-Losses PIC 99.
            03 Lucina.
                04 Lucina-Name PIC X(6).
                04 Lucina-Wins PIC 99. 
                04 Lucina-Losses PIC 99. 
            03 Young-Link.
-               04 Young-Link-Name PIC X(10)
+               04 Young-Link-Name PIC X(10).
                04 Young-Link-Wins PIC 99. 
                04 Young-Link-Losses PIC 99. 
            03 Ganondorf.
@@ -126,7 +129,7 @@ FD PlayerFile.
                04 Roy-Wins PIC 99. 
                04 Roy-Losses PIC 99. 
            03 Chrom.
-               04 Chrom-Name PIC X(4).
+               04 Chrom-Name PIC X(5).
                04 Chrom-Wins PIC 99. 
                04 Chrom-Losses PIC 99. 
            03 Mr-Game-And-Watch.
@@ -146,7 +149,7 @@ FD PlayerFile.
                04 Dark-Pit-Wins PIC 99. 
                04 Dark-Pit-Losses PIC 99. 
            03 Zero-Suit-Samus.
-               04 Zero-Suit-Samus-Name PIC X(15)
+               04 Zero-Suit-Samus-Name PIC X(15).
                04 Zero-Suit-Samus-Wins PIC 99. 
                04 Zero-Suit-Samus-Losses PIC 99. 
            03 Wario.
@@ -210,7 +213,7 @@ FD PlayerFile.
                04 Megaman-Wins PIC 99.
                04 Megaman-Losses PIC 99.
            03 Wii-Fit-Trainer.
-               04 Wii-Fit-Trainer-Name PIC (15).
+               04 Wii-Fit-Trainer-Name PIC X(15).
                04 Wii-Fit-Trainer-Wins PIC 99.
                04 Wii-Fit-Trainer-Losses PIC 99.
            03 Rosalina.
@@ -218,7 +221,7 @@ FD PlayerFile.
                04 Rosalina-Wins PIC 99.
                04 Rosalina-Losses PIC 99.
            03 Little-Mac.
-               04 Little-Mac-Name PIC X(9).
+               04 Little-Mac-Name PIC X(10).
                04 Little-Mac-Wins PIC 99.
                04 Little-Mac-Losses PIC 99.
            03 Greninja.
@@ -250,11 +253,11 @@ FD PlayerFile.
                04 Duck-Hunt-Wins PIC 99.
                04 Duck-Hunt-Losses PIC 99.
            03 Ryu.
-               04 Ryu-Name PIC XXX
+               04 Ryu-Name PIC XXX.
                04 Ryu-Wins PIC 99.
                04 Ryu-Losses PIC 99.
            03 Ken.
-               04 Ken-Name PIC XXX
+               04 Ken-Name PIC XXX.
                04 Ken-Wins PIC 99.
                04 Ken-Losses PIC 99.
            03 Cloud.
@@ -278,17 +281,17 @@ FD PlayerFile.
                04 Ridley-Wins PIC 99.
                04 Ridley-Losses PIC 99.
            03 Simon.
-               04 Simon-Name PIC (5).
+               04 Simon-Name PIC X(5).
                04 Simon-Wins PIC 99.
                04 Simon-Losses PIC 99.
            03 Richter.
                04 Richter-Name PIC X(7).
                04 Richter-Wins PIC 99. 
                04 Richter-Losses PIC 99.
-           03 King-Krool.
-               04 King-Krool-Name PIC X(10).
-               04 King-Krool-Wins PIC 99.
-               04 King-Krool-Losses PIC 99.
+           03 King-K-Rool.
+               04 King-K-Rool-Name PIC X(11).
+               04 King-K-Rool-Wins PIC 99.
+               04 King-K-Rool-Losses PIC 99.
            03 Isabelle.
                04 Isabelle-Name PIC X(8).
                04 Isabelle-Wins PIC 99.
@@ -360,31 +363,19 @@ FD PlayerFile.
 
 
       PROCEDURE DIVISION.
-       PERFORM SumSetTotals.
-       PERFORM PrintWinrates
-       STOP RUN.
-
-       SumSetTotals.
-       OPEN PlayerFile
-       Read next record from PlayerFile
-       PERFORM UNTIL EndOfPlayerFile
-           Move ZEROS TO 
-           
-
-
-
-    *>   Begin.
-    *>   OPEN INPUT PlayerFile
-    *>   READ PlayerFile
-    *>    AT END SET EndOfPlayerFile TO TRUE 
-    *>   END-READ 
-    *>   PERFORM UNTIL EndOfPlayerFile
-    *>    READ PlayerFile
-    *>        At END SET EndOfPlayerFile TO TRUE
-    *>    END READ
-    *>   END-PERFORM 
-    *>   CLOSE PlayerFile
-    *>   STOP RUN.
+Begin.
+   OPEN INPUT PlayerFile
+   READ PlayerFile
+     AT END SET EndOfPlayerFile TO TRUE
+   END-READ
+   PERFORM UNTIL EndOfPlayerFile
+       DISPLAY PlayerName SPACE Mii-Swordfighter
+      READ PlayerFile
+        AT END SET EndOfPlayerFile TO TRUE
+      END-READ
+   END-PERFORM
+   CLOSE PlayerFile
+   STOP RUN.
 
            
        
