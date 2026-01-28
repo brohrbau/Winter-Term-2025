@@ -469,6 +469,8 @@ Begin.
      AT END SET EndOfPlayerFile TO TRUE
    END-READ
    PERFORM UNTIL EndOfPlayerFile
+
+       DISPLAY Megaman
    *> There's almost certainly a better way to do this, but with how I originally setup the FD, I'm not really sure how.
       ADD Mario-Wins TO CharacterSetWins(1)
       Add Mario-Losses TO CharacterSetLosses(1)
@@ -735,7 +737,6 @@ Begin.
 
    PERFORM PrintResults
    
-
 
    CLOSE PlayerFile
    STOP RUN.
